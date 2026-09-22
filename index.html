@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-a">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Desk — Soft & Cozy Pinboard for Intentional Learning</title>
+  <meta name="description" content="A cozy, soft pinboard-style web application for students to track focus, goals, timer, music, materials, and scores.">
+
+  <!-- Google Fonts: Plus Jakarta Sans (Clean modern bold sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Design Tokens & CSS Modules -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pinboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       WHIMSICAL AMBIENT BACKGROUND (Twinkling Stars & Floating Swirls: ★ 𖦹)
+       ========================================================================= -->
+  <div class="whimsical-ambient-bg" id="whimsical-ambient-bg" aria-hidden="true">
+    <!-- Star & Swirl ambient particles (styled & animated via CSS) -->
+    <span class="whimsy-item star star-1" style="--x: 5%; --y: 8%; --dur: 3.5s; --delay: 0s; --size: 1.4rem;">★</span>
+    <span class="whimsy-item swirl swirl-1" style="--x: 14%; --y: 22%; --dur: 12s; --delay: 0.5s; --size: 2rem;">𖦹</span>
+    <span class="whimsy-item star star-2" style="--x: 28%; --y: 6%; --dur: 4.2s; --delay: 1.2s; --size: 1.1rem;">✦</span>
+    <span class="whimsy-item swirl swirl-2" style="--x: 88%; --y: 12%; --dur: 15s; --delay: 1.8s; --size: 2.2rem;">𖦹</span>
+    <span class="whimsy-item star star-3" style="--x: 94%; --y: 28%; --dur: 3.8s; --delay: 0.7s; --size: 1.6rem;">★</span>
+    <span class="whimsy-item star star-4" style="--x: 48%; --y: 4%; --dur: 5s; --delay: 2.1s; --size: 0.9rem;">⋆</span>
+    <span class="whimsy-item swirl swirl-3" style="--x: 3%; --y: 52%; --dur: 14s; --delay: 2.5s; --size: 1.8rem;">𖦹</span>
+    <span class="whimsy-item star star-5" style="--x: 10%; --y: 78%; --dur: 4.5s; --delay: 1.5s; --size: 1.3rem;">★</span>
+    <span class="whimsy-item star star-6" style="--x: 42%; --y: 48%; --dur: 3.2s; --delay: 0.3s; --size: 1.2rem;">✧</span>
+    <span class="whimsy-item swirl swirl-4" style="--x: 55%; --y: 85%; --dur: 18s; --delay: 3s; --size: 2.4rem;">𖦹</span>
+    <span class="whimsy-item star star-7" style="--x: 72%; --y: 62%; --dur: 4.8s; --delay: 2s; --size: 1.5rem;">★</span>
+    <span class="whimsy-item star star-8" style="--x: 92%; --y: 70%; --dur: 3.6s; --delay: 0.9s; --size: 1.2rem;">✦</span>
+    <span class="whimsy-item swirl swirl-5" style="--x: 82%; --y: 92%; --dur: 16s; --delay: 1.1s; --size: 1.9rem;">𖦹</span>
+    <span class="whimsy-item star star-9" style="--x: 25%; --y: 92%; --dur: 4.1s; --delay: 2.7s; --size: 1.4rem;">★</span>
+    <span class="whimsy-item star star-10" style="--x: 65%; --y: 18%; --dur: 3.9s; --delay: 1.4s; --size: 1rem;">⋆</span>
+  </div>
+
+  <!-- =========================================================================
+       STICKY DESK HEADER BAR
+       ========================================================================= -->
+  <header class="desk-header" role="banner">
+    <div class="desk-branding">
+      <div class="desk-logo-text" tabindex="0">
+        📌 Study Desk <span class="desk-header-whimsy">★</span>
+      </div>
+    </div>
+
+    <div class="desk-header-actions">
+      <!-- Theme Switcher (Theme A vs Theme B) -->
+      <div class="desk-theme-toggle" id="theme-toggle-container" role="radiogroup" aria-label="Color Theme Switcher">
+        <button type="button" class="theme-pill active" data-set-theme="theme-a" role="radio" aria-checked="true" title="Theme A: Citrus & Cranberry">
+          Theme A
+        </button>
+        <button type="button" class="theme-pill" data-set-theme="theme-b" role="radio" aria-checked="false" title="Theme B: Sunset & Teal">
+          Theme B
+        </button>
+      </div>
+
+      <!-- Quick Settings / Account Button -->
+      <a href="#settings" class="desk-btn desk-btn-sm" id="header-settings-btn" title="Desk Settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>Settings</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN PINBOARD SURFACE CANVAS
+       ========================================================================= -->
+  <main class="pinboard-surface" id="main-pinboard" role="main">
+    <div class="pinboard-grid">
+      <!-- Left Column: Timer, Music, Score Tracker -->
+      <section class="pinboard-col-left" id="pinboard-col-left" aria-label="Study Tools & Score Tracker">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+
+      <!-- Main/Right Area: Focus Postcard, Goals, Materials & Reminders -->
+      <section class="pinboard-col-main" id="pinboard-col-main" aria-label="Current Focus, Goals and Materials">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       DETAIL MODAL CONTAINER (Animated Paper Expansion with Deep Links)
+       ========================================================================= -->
+  <div class="desk-modal-backdrop" id="desk-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="desk-modal-title">
+    <div class="desk-modal-card" id="desk-modal-card">
+      <div class="desk-modal-header">
+        <h2 class="desk-modal-title" id="desk-modal-title">Detail View</h2>
+        <button type="button" class="desk-btn desk-btn-sm desk-btn-icon" data-close-modal title="Close modal (Esc)" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="desk-modal-body" id="desk-modal-body">
+        <!-- Dynamic Feature View Content -->
+      </div>
+
+      <div class="desk-modal-footer" id="desk-modal-footer">
+        <!-- Dynamic Footer Actions -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry Script (ES Modules) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

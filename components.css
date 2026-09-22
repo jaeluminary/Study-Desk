@@ -1,0 +1,455 @@
+/* ==========================================================================
+   STUDY DESK - COMPONENTS & DECORATIONS
+   Cozy paper notes, washi tape, pushpins, rubber stamps, postmarks, doodles
+   ========================================================================== */
+
+/* --- PUSHPIN STYLING (Pure CSS / SVG) --- */
+.pushpin {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  z-index: 10;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 5px rgba(40, 25, 10, 0.4));
+}
+
+.pushpin.pin-left {
+  left: 24px;
+  transform: none;
+}
+
+.pushpin.pin-right {
+  left: auto;
+  right: 24px;
+  transform: none;
+}
+
+/* --- WASHI TAPE STYLING --- */
+.washi-tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(var(--tape-rot, -2deg));
+  width: 90px;
+  height: 24px;
+  background-color: var(--tape-color, var(--tape-color-1));
+  box-shadow: var(--shadow-tape);
+  opacity: 0.88;
+  z-index: 8;
+  pointer-events: none;
+  clip-path: polygon(
+    0% 4px, 4px 0%, calc(100% - 4px) 0%, 100% 4px,
+    98% 50%, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0% calc(100% - 4px), 2% 50%
+  );
+  border-left: 1px dashed rgba(255, 255, 255, 0.4);
+  border-right: 1px dashed rgba(255, 255, 255, 0.4);
+}
+
+.washi-tape.tape-left {
+  left: 20px;
+  transform: rotate(-6deg);
+}
+
+.washi-tape.tape-right {
+  left: auto;
+  right: 20px;
+  transform: rotate(5deg);
+}
+
+.washi-tape.tape-corner {
+  top: -10px;
+  right: -25px;
+  transform: rotate(45deg);
+  width: 80px;
+}
+
+/* --- POSTMARK & STAMP (Code-drawn CSS/SVG) --- */
+.rubber-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2.5px dashed var(--stamp-ink, var(--accent-4));
+  color: var(--stamp-ink, var(--accent-4));
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(var(--stamp-rot, -8deg));
+  opacity: 0.88;
+  mask-image: radial-gradient(circle, black 70%, rgba(0,0,0,0.6) 100%);
+  user-select: none;
+}
+
+.rubber-stamp.circular {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border-style: double;
+  border-width: 3.5px;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 4px;
+}
+
+.postmark-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.postmark-line {
+  height: 2px;
+  background-color: var(--stamp-ink, var(--accent-4));
+  border-radius: 1px;
+}
+
+/* --- PLACEHOLDER ARTWORK SLOTS (Hard Rule: clearly labeled, easy-to-swap) --- */
+.art-placeholder-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(145, 115, 80, 0.04),
+    rgba(145, 115, 80, 0.04) 10px,
+    rgba(145, 115, 80, 0.08) 10px,
+    rgba(145, 115, 80, 0.08) 20px
+  );
+  border: 1.5px dashed var(--ink-border-strong);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin: 12px 0;
+  text-align: center;
+  color: var(--ink-muted);
+  position: relative;
+  min-height: 90px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.art-placeholder-slot:hover {
+  background-color: rgba(245, 222, 143, 0.18);
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+}
+
+.art-placeholder-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.art-placeholder-sub {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+/* --- BUTTONS & CONTROLS --- */
+.desk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--ink-border-strong);
+  background-color: var(--paper-cream);
+  color: var(--ink-primary);
+  box-shadow: 0 2px 5px rgba(40, 30, 20, 0.08);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.desk-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(40, 30, 20, 0.14);
+}
+
+.desk-btn:active {
+  transform: translateY(0);
+}
+
+.desk-btn:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.desk-btn-primary {
+  background-color: var(--primary-color);
+  color: var(--primary-contrast);
+  border-color: transparent;
+}
+
+.desk-btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.desk-btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--secondary-contrast);
+  border-color: transparent;
+}
+
+.desk-btn-highlight {
+  background-color: var(--highlight-color);
+  color: var(--highlight-contrast);
+  border-color: transparent;
+  font-weight: 700;
+}
+
+.desk-btn-sm {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border-radius: var(--radius-sm);
+}
+
+.desk-btn-icon {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.desk-btn-danger {
+  background-color: #D02618;
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+.desk-btn:disabled, .desk-btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* --- INPUTS & FORMS --- */
+.desk-input, .desk-select, .desk-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--ink-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--ink-primary);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.desk-input:focus, .desk-select:focus, .desk-textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(208, 38, 24, 0.15);
+}
+
+.desk-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.desk-field-group {
+  margin-bottom: 14px;
+}
+
+/* --- BADGES & TAGS --- */
+.desk-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background-color: var(--paper-yellow);
+  color: var(--ink-secondary);
+  border: 1px solid var(--ink-border);
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.desk-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* --- PROGRESS BARS --- */
+.desk-progress-track {
+  width: 100%;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.desk-progress-fill {
+  height: 100%;
+  background: var(--progress-fill);
+  border-radius: var(--radius-full);
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* --- MODAL CONTAINER & BACKDROP --- */
+.desk-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(35, 30, 22, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.desk-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.desk-modal-card {
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  background-color: var(--paper-cream);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+  border: 1px solid var(--ink-border-strong);
+}
+
+.desk-modal-backdrop.active .desk-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.desk-modal-header {
+  padding: 18px 24px;
+  border-bottom: 1.5px dashed var(--ink-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--paper-postcard);
+}
+
+.desk-modal-title {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desk-modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.desk-modal-footer {
+  padding: 14px 24px;
+  border-top: 1.5px dashed var(--ink-border);
+  background-color: var(--paper-postcard);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* --- EMPTY STATES --- */
+.desk-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 16px;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.desk-empty-doodle {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+
+.desk-empty-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-primary);
+  margin-bottom: 4px;
+}
+
+.desk-empty-sub {
+  font-size: 0.88rem;
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+/* --- TABS --- */
+.desk-tabs {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1.5px solid var(--ink-border);
+  margin-bottom: 18px;
+}
+
+.desk-tab-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.desk-tab-btn:hover {
+  color: var(--ink-primary);
+}
+
+.desk-tab-btn.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}

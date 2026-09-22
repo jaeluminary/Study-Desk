@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if the user is signed in and accessing their own data
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    // User settings & profile data
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+
+      match /{subcollection}/{docId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // Focus history, goals, timer sessions, materials, scores, reminders
+    match /users/{userId}/goals/{goalId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    match /users/{userId}/materials/{materialId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    match /users/{userId}/timerSessions/{sessionId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    match /users/{userId}/scores/{scoreId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    match /users/{userId}/reminders/{reminderId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    match /users/{userId}/postcards/{postcardId} {
+      allow read, write: if isOwner(userId);
+    }
+  }
+}

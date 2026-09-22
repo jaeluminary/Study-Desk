@@ -1,0 +1,122 @@
+/* ==========================================================================
+   STUDY DESK - RESPONSIVE STYLES
+   Desktop multi-column to single-column stacked mobile pinboard
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .pinboard-grid {
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+  }
+  
+  .pinboard-secondary-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .desk-header {
+    padding: 10px 16px;
+  }
+
+  .desk-logo-text {
+    font-size: 1.7rem;
+  }
+
+  .pinboard-surface {
+    padding: 16px 12px 48px 12px;
+  }
+
+  .pinboard-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pinboard-col-left,
+  .pinboard-col-main {
+    gap: 20px;
+  }
+
+  .paper-card {
+    /* Reduce random tilt slightly on mobile for cleaner finger tapping */
+    transform: rotate(calc(var(--rot, 0deg) * 0.4));
+    padding: 16px 18px;
+  }
+
+  .paper-card:hover {
+    transform: translateY(-3px) scale(1.01);
+  }
+
+  /* Full-screen detail modals on mobile */
+  .desk-modal-backdrop {
+    padding: 0;
+  }
+
+  .desk-modal-card {
+    max-width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .desk-modal-header {
+    padding: 14px 18px;
+  }
+
+  .desk-modal-body {
+    padding: 18px;
+  }
+
+  .desk-modal-footer {
+    padding: 12px 18px;
+  }
+
+  .timer-digits-display {
+    font-size: 2.2rem;
+  }
+
+  .focus-subject-tag {
+    font-size: 1.3rem;
+  }
+
+  .score-stats-row {
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+  }
+}
+
+/* Small screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .desk-logo-text {
+    font-size: 1.35rem;
+  }
+  
+  .timer-presets {
+    flex-wrap: wrap;
+  }
+}
+
+/* Print Styles for Monthly Postcard Archiving */
+@media print {
+  .desk-header,
+  .desk-modal-footer,
+  .desk-btn,
+  .desk-tabs {
+    display: none !important;
+  }
+
+  body, .pinboard-surface, .desk-modal-card {
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+  }
+
+  .monthly-postcard-render {
+    page-break-inside: avoid;
+    border: 2px solid #000000 !important;
+  }
+}

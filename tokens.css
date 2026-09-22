@@ -1,0 +1,137 @@
+/* ==========================================================================
+   STUDY DESK - DESIGN TOKENS
+   Theme A & Theme B with WCAG AA Accessible Contrast Tokens
+   ========================================================================== */
+
+:root {
+  /* --- TYPOGRAPHY (Clean, Modern Bold Sans-Serif - Arial / Plus Jakarta Sans) --- */
+  --font-display: 'Plus Jakarta Sans', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  --font-hand: 'Plus Jakarta Sans', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  --font-body: 'Plus Jakarta Sans', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+
+  /* --- NEUTRALS & BOARD TEXTURES --- */
+  --board-bg: #EFE7DA;
+  --board-pattern-dot: rgba(145, 115, 80, 0.12);
+  --board-border: #D8CCA8;
+
+  /* Paper Palette */
+  --paper-cream: #FCFBF7;
+  --paper-yellow: #FEF9E7;
+  --paper-pink: #FFF0F2;
+  --paper-blue: #F0F7FF;
+  --paper-green: #F2F9F2;
+  --paper-lavender: #F6F2FF;
+  --paper-kraft: #F2E8D5;
+  --paper-postcard: #FAF7F0;
+
+  /* Ink / Text Colors */
+  --ink-primary: #23201C;
+  --ink-secondary: #57524A;
+  --ink-muted: #847E72;
+  --ink-light: #FDFCFA;
+  --ink-border: rgba(35, 32, 28, 0.12);
+  --ink-border-strong: rgba(35, 32, 28, 0.22);
+
+  /* Shadows - Layered & Soft */
+  --shadow-paper: 0 4px 12px rgba(45, 35, 20, 0.08), 0 1px 3px rgba(45, 35, 20, 0.06);
+  --shadow-paper-hover: 0 12px 28px rgba(45, 35, 20, 0.14), 0 4px 10px rgba(45, 35, 20, 0.08);
+  --shadow-paper-lift: 0 18px 36px rgba(45, 35, 20, 0.18), 0 6px 14px rgba(45, 35, 20, 0.1);
+  --shadow-pin: 0 6px 10px rgba(30, 20, 10, 0.35);
+  --shadow-tape: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-modal: 0 24px 60px rgba(25, 20, 12, 0.28), 0 8px 24px rgba(25, 20, 12, 0.18);
+
+  /* Radii & Spacing */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ==========================================================================
+   THEME A: Warm Citrus & Cranberry
+   #DFEF00, #B5D14C, #F5DE8F, #D02618, #910608
+   ========================================================================== */
+[data-theme="theme-a"], :root {
+  --theme-id: "theme-a";
+  --accent-1: #DFEF00; /* Highlighter Lime - Dark text ONLY */
+  --accent-2: #B5D14C; /* Sage Green */
+  --accent-3: #F5DE8F; /* Chamomile Cream - Dark text ONLY */
+  --accent-4: #D02618; /* Cranberry Red */
+  --accent-5: #910608; /* Deep Mahogany */
+  
+  /* Semantic Mappings */
+  --primary-color: #D02618;
+  --primary-contrast: #FFFFFF;
+  --secondary-color: #B5D14C;
+  --secondary-contrast: #1E2408;
+  --highlight-color: #DFEF00;
+  --highlight-contrast: #202400;
+  --warm-accent: #F5DE8F;
+  --warm-contrast: #382E06;
+  --dark-accent: #910608;
+  --dark-contrast: #FFFFFF;
+
+  /* Pin & Tape Accents */
+  --pin-color-1: #D02618;
+  --pin-color-2: #DFEF00;
+  --pin-color-3: #910608;
+  --pin-color-4: #B5D14C;
+  --tape-color-1: rgba(223, 239, 0, 0.55);
+  --tape-color-2: rgba(245, 222, 143, 0.65);
+  --tape-color-3: rgba(181, 209, 76, 0.55);
+
+  /* Stamp / Postmark Inks */
+  --stamp-ink: #D02618;
+  --stamp-ink-alt: #910608;
+  --progress-fill: linear-gradient(135deg, #B5D14C, #DFEF00);
+  --badge-bg: #F5DE8F;
+  --badge-text: #382E06;
+}
+
+/* ==========================================================================
+   THEME B: Sunset Rainbow & Teal
+   #CD060D, #FE8128, #F9D81E, #D0EF53, #6CDD6C, #00ABB4
+   ========================================================================== */
+[data-theme="theme-b"] {
+  --theme-id: "theme-b";
+  --accent-1: #CD060D; /* Ruby Red */
+  --accent-2: #FE8128; /* Tangerine */
+  --accent-3: #F9D81E; /* Mustard Yellow - Dark text ONLY */
+  --accent-4: #D0EF53; /* Chartreuse - Dark text ONLY */
+  --accent-5: #6CDD6C; /* Mint Meadow */
+  --accent-6: #00ABB4; /* Soft Teal Ocean */
+
+  /* Semantic Mappings */
+  --primary-color: #00ABB4;
+  --primary-contrast: #FFFFFF;
+  --secondary-color: #FE8128;
+  --secondary-contrast: #FFFFFF;
+  --highlight-color: #F9D81E;
+  --highlight-contrast: #2B2100;
+  --warm-accent: #D0EF53;
+  --warm-contrast: #202700;
+  --dark-accent: #CD060D;
+  --dark-contrast: #FFFFFF;
+
+  /* Pin & Tape Accents */
+  --pin-color-1: #00ABB4;
+  --pin-color-2: #FE8128;
+  --pin-color-3: #CD060D;
+  --pin-color-4: #6CDD6C;
+  --tape-color-1: rgba(0, 171, 180, 0.45);
+  --tape-color-2: rgba(254, 129, 40, 0.5);
+  --tape-color-3: rgba(249, 216, 30, 0.55);
+
+  /* Stamp / Postmark Inks */
+  --stamp-ink: #00ABB4;
+  --stamp-ink-alt: #CD060D;
+  --progress-fill: linear-gradient(135deg, #00ABB4, #6CDD6C);
+  --badge-bg: #F9D81E;
+  --badge-text: #2B2100;
+}
